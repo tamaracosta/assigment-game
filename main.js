@@ -8,3 +8,7 @@ let round = 1;
 function greeting(){
     alert("Welcome to my Rock, Paper, Scissors Game! Have fun!!")
 }
+
+function computerPlay() {
+    return options[Math.floor(Math.random()*options.length)];
+}
