@@ -25,3 +25,20 @@ function getPlayerSelection() {
         }
     }
 }
+
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === computerSelection) {
+        return `Player: ${playerSelection} | Computer ${computerSelection} - draw!`;
+    } else if (
+        (playerSelection === "rock" && computerSelection === "scissors") ||
+        (playerSelection === "paper" && computerSelection === "rock") ||
+        (playerSelection === "scissors" && computerSelection === "paper")) {
+        return `Player: ${playerSelection} | Computer ${computerSelection} - you win!`;
+    } else {
+        return `Player: ${playerSelection} | Computer ${computerSelection} - you lose!`;      
+    }
+}
+
+const playerSelection =  getPlayerSelection();
+const computerSelection= computerPlay();
+console.log(playRound(playerSelection, computerSelection));
