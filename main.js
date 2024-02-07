@@ -4,6 +4,7 @@ const roundsToPlay = 5;
 let playerScore = 0;
 let computerScore = 0;
 let round = 1;
+let endGame = false;
 
 function greeting(){
     alert("Welcome to my Rock, Paper, Scissors Game! Have fun!!")
@@ -42,3 +43,11 @@ function playRound(playerSelection, computerSelection) {
 const playerSelection =  getPlayerSelection();
 const computerSelection= computerPlay();
 console.log(playRound(playerSelection, computerSelection));
+
+function cancelGame() {
+	if (confirm("Do you wanna quit the game?")) {
+		alert("Thank you for playing! 😊");
+		endGame = true;
+	}
+}
+
