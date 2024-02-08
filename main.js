@@ -58,6 +58,7 @@ function cancelGame() {
     }
 }
 
+
 function game() {
     greeting();
     while (round <= roundsToPlay && !endGame) {
@@ -66,7 +67,7 @@ function game() {
         const computerSelection = computerPlay();
         console.log(playRound(playerSelection, computerSelection));
         round++;
-        alert(`Round ${round}: Player: ${playerSelection} | Computer: ${computerSelection}`) 
+        alert(`Round ${round - 1}: Player: ${playerSelection} | Computer: ${computerSelection}`)
     }
 
     if (!endGame) {
