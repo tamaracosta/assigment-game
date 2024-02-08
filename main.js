@@ -62,7 +62,7 @@ function game() {
         const computerSelection = computerPlay();
         console.log(playRound(playerSelection, computerSelection));
         round++;
-        alert(`Round ${round}: Player: ${playerSelection} | Computer: ${computerSelection}`)
+        alert(`Round ${round}: Player: ${playerSelection} | Computer: ${computerSelection}`) //to display the result 
     }
 
     if (!endGame) {
