@@ -7,7 +7,11 @@ let round = 1;
 let endGame = false;
 
 function greeting() {
-    alert("Welcome to my Rock, Paper, Scissors Game! Have fun!!");
+    alert("Welcome to my Rock, Paper, Scissors Game!");
+    alert("The game rule is simple! \nRock crushes scissors, scissors cut paper, and paper covers rock")
+    alert("Choose an option: Rock, Paper or Scissors for each round.\nThere are 5 rounds. \nThe winner will be determined at the end.") 
+    alert("You will be playing against the AI that wants to dominate the world! \nHelp us win against this villain!")
+    alert("Let's start! \nHave fun!!")
 }
 
 function computerPlay() {
@@ -16,7 +20,7 @@ function computerPlay() {
 
 function getPlayerSelection() {
     while(true){
-        let userChoice = prompt("Please enter your selection:");
+        let userChoice = prompt("Rock, Paper, Scissors, Shoot!");
         if (!userChoice) {
             cancelGame();
             return;
@@ -62,7 +66,7 @@ function game() {
         const computerSelection = computerPlay();
         console.log(playRound(playerSelection, computerSelection));
         round++;
-        alert(`Round ${round}: Player: ${playerSelection} | Computer: ${computerSelection}`)
+        alert(`Round ${round}: Player: ${playerSelection} | Computer: ${computerSelection}`) 
     }
 
     if (!endGame) {
