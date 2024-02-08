@@ -6,8 +6,8 @@ let computerScore = 0;
 let round = 1;
 let endGame = false;
 
-function greeting(){
-    alert("Welcome to my Rock, Paper, Scissors Game! Have fun!!")
+function greeting() {
+    alert("Welcome to my Rock, Paper, Scissors Game! Have fun!!");
 }
 
 function computerPlay() {
@@ -17,11 +17,15 @@ function computerPlay() {
 function getPlayerSelection() {
     while(true){
         let userChoice = prompt("Please enter your selection:");
-        let userChoiceLowerCase =  userChoice.toLowerCase();
+        if (!userChoice) {
+            cancelGame();
+            return;
+        }
+        let userChoiceLowerCase = userChoice.toLowerCase();
 
-        if(options.includes(userChoiceLowerCase)){
+        if(options.includes(userChoiceLowerCase)) {
             return userChoiceLowerCase;
-        }else{
+        } else {
             alert('Invalid selection!!\nPlease choose one of the following options:\nRock\nPaper\nScissors');
         }
     }
@@ -29,25 +33,41 @@ function getPlayerSelection() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        return `Player: ${playerSelection} | Computer ${computerSelection} - draw!`;
+        return `Round ${round}: Player: ${playerSelection} | Computer: ${computerSelection} - Draw!`;
     } else if (
         (playerSelection === "rock" && computerSelection === "scissors") ||
         (playerSelection === "paper" && computerSelection === "rock") ||
-        (playerSelection === "scissors" && computerSelection === "paper")) {
-        return `Player: ${playerSelection} | Computer ${computerSelection} - you win!`;
+        (playerSelection === "scissors" && computerSelection === "paper")
+    ) {
+        playerScore++;
+        return `Round ${round}: Player: ${playerSelection} | Computer: ${computerSelection} - You win!`;
     } else {
-        return `Player: ${playerSelection} | Computer ${computerSelection} - you lose!`;      
+        computerScore++;
+        return `Round ${round}: Player: ${playerSelection} | Computer: ${computerSelection} - You lose!`;
     }
 }
 
-const playerSelection =  getPlayerSelection();
-const computerSelection= computerPlay();
-console.log(playRound(playerSelection, computerSelection));
-
 function cancelGame() {
-	if (confirm("Do you wanna quit the game?")) {
-		alert("Thank you for playing! 😊");
-		endGame = true;
-	}
+    if (confirm("Do you wanna quit the game?")) {
+        alert("Thank you for playing! 😊");
+        endGame = true;
+    }
 }
 
+function game() {
+    greeting();
+    while (round <= roundsToPlay && !endGame) {
+        const playerSelection = getPlayerSelection();
+        if (endGame) break;
+        const computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
+        round++;
+    }
+
+    if (!endGame) {
+        console.log(`Game over! Final Score - Player: ${playerScore} | Computer: ${computerScore}`);
+        alert(`Game over! Final Score - Player: ${playerScore} | Computer: ${computerScore}`);
+    }
+}
+
+game();
