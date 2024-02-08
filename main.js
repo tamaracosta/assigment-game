@@ -62,6 +62,7 @@ function game() {
         const computerSelection = computerPlay();
         console.log(playRound(playerSelection, computerSelection));
         round++;
+        alert(`Round ${round}: Player: ${playerSelection} | Computer: ${computerSelection}`)
     }
 
     if (!endGame) {
