@@ -8,7 +8,7 @@ let endGame = false;
 
 function greeting() {
     alert("Welcome to my Rock, Paper, Scissors Game!");
-    alert("The game is simple!")
+    alert("The game rule is simple! \nRock crushes scissors, scissors cut paper, and paper covers rock")
     alert("Choose an option: Rock, Paper or Scissors for each round.\nThere are 5 rounds. \nThe winner will be determined at the end.") 
     alert("You will be playing against the AI that wants to dominate the world! \nHelp us win against this villain!")
     alert("Let's start! \nHave fun!!")
