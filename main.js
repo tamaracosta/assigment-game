@@ -8,9 +8,9 @@ let endGame = false;
 let draws = 0;
 
 function greeting() {   
-    alert("Welcome to my 💎Rock, 📄Paper, ✂️Scissors Game!");
+    alert("Welcome to my 👊Rock, ✋Paper, ✌️Scissors Game!");
     alert("Rock crushes scissors, scissors cut paper, and paper covers rock")
-    alert("There are 5 rounds. \nThe winner will be determined at the end. \n Let's start! Have fun!! ▶️") 
+    alert("There are 5 rounds.Let's start! Have fun!! ▶️ \n\n 📢CLICK F12 (console.log) TO SEE THE RESULTS") 
 }
 
 function computerPlay() {
@@ -19,7 +19,7 @@ function computerPlay() {
 
 function getPlayerSelection() {
     while(true){
-        let userChoice = prompt("Rock, Paper, Scissors, Shoot!");
+        let userChoice = prompt("Rock, Paper, Scissors, Shootttt!!");
         if (!userChoice) {
             cancelGame();
             return;
@@ -36,42 +36,44 @@ function getPlayerSelection() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        draws++;
-        return `Round ${round}: Player: ${playerSelection} | Computer: ${computerSelection} - Draw!`;
+        draws++;        
+        return "Draw";
     } else if (
         (playerSelection === "rock" && computerSelection === "scissors") ||
         (playerSelection === "paper" && computerSelection === "rock") ||
         (playerSelection === "scissors" && computerSelection === "paper")
     ) {
         playerScore++;
-        return `Round ${round}: Player: ${playerSelection} | Computer: ${computerSelection} - You win 😍!`;
+        return "You win 😍! " + playerSelection + " beats " + computerSelection;        
     } else {
         computerScore++;
-        return `Round ${round}: Player: ${playerSelection} | Computer: ${computerSelection} - You lose 😫!`;
+        return "You lost 😫! " + computerSelection + " beats " + playerSelection;        
     }
 }
 
-function cancelGame() {
-    if (confirm("Do you wanna quit the game?")) {
-        alert("Thank you for playing! 😊");
+function cancelGame() {    
+    if (confirm("Do you wanna quit the game?")) {       
+        alert("Bye! Thank you for playing! 😊");
         endGame = true;
     }
 }
 
-
 function game() {
     greeting();
-    while (round <= roundsToPlay && !endGame) {
+    
+    while (round <= roundsToPlay && !endGame) {      
         const playerSelection = getPlayerSelection();
-        if (endGame) break;
-        const computerSelection = computerPlay();
-        (playRound(playerSelection, computerSelection));
-        round++;
-        alert(`Round ${round - 1}: \n PLAYER: ${playerSelection} ---> score: ${playerScore} \n COMPUTER: ${computerSelection} ---> score: ${computerScore} \n DRAWS: ---> ${draws}`)
+        const computerSelection = computerPlay();        
+        let roundResult = playRound(playerSelection, computerSelection);
+
+        console.log(`===== ROUND ${round} =====`);        
+        console.log(` 🧑‍💻PLAYER: ${playerSelection} ---> score: ${playerScore} \n 💻COMPUTER: ${computerSelection} ---> score: ${computerScore} \n 😕DRAWS: ---> ${draws}`)
+        console.log(roundResult);
+        round++;        
     }
 
     if (!endGame) {
-        alert(`Game over! Final Score - Player: ${playerScore} | Computer: ${computerScore} | Draws:${draws} `);
+        console.log(`💀Game over! Final Score - Player: ${playerScore} | Computer: ${computerScore} | Draws:${draws} `);
     }
 }
 
