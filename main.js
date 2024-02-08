@@ -5,8 +5,9 @@ let playerScore = 0;
 let computerScore = 0;
 let round = 1;
 let endGame = false;
+let draws = 0;
 
-function greeting() {
+function greeting() {   
     alert("Welcome to my 💎Rock, 📄Paper, ✂️Scissors Game!");
     alert("Rock crushes scissors, scissors cut paper, and paper covers rock")
     alert("There are 5 rounds. \nThe winner will be determined at the end. \n Let's start! Have fun!! ▶️") 
@@ -35,6 +36,7 @@ function getPlayerSelection() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
+        draws++;
         return `Round ${round}: Player: ${playerSelection} | Computer: ${computerSelection} - Draw!`;
     } else if (
         (playerSelection === "rock" && computerSelection === "scissors") ||
@@ -63,14 +65,13 @@ function game() {
         const playerSelection = getPlayerSelection();
         if (endGame) break;
         const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
+        (playRound(playerSelection, computerSelection));
         round++;
-        alert(`Round ${round - 1}: Player: ${playerSelection} | Computer: ${computerSelection}`)
+        alert(`Round ${round - 1}: \n PLAYER: ${playerSelection} ---> score: ${playerScore} \n COMPUTER: ${computerSelection} ---> score: ${computerScore} \n DRAWS: ---> ${draws}`)
     }
 
     if (!endGame) {
-        console.log(`Game over! Final Score - Player: ${playerScore} | Computer: ${computerScore}`);
-        alert(`Game over! Final Score - Player: ${playerScore} | Computer: ${computerScore}`);
+        alert(`Game over! Final Score - Player: ${playerScore} | Computer: ${computerScore} | Draws:${draws} `);
     }
 }
 
