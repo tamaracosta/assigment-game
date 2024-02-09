@@ -18,15 +18,14 @@ function computerPlay() {
 
 function getPlayerSelection() {
     while(true){
-        let userChoice = prompt("Rock, Paper, Scissors, Shoot!");
+        let userChoice = prompt("Rock, Paper, Scissors, Shoot!").toLowerCase();
         if (!userChoice) {
             cancelGame();
             return;
         }
-        let userChoiceLowerCase = userChoice.toLowerCase();
 
-        if(options.includes(userChoiceLowerCase)) {
-            return userChoiceLowerCase;
+        if(options.includes(userChoice)) {
+            return userChoice;
         } else {
             alert('Invalid selection!!\nPlease choose one of the following options:\nRock\nPaper\nScissors');
         }
