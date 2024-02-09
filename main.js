@@ -18,7 +18,7 @@ function computerPlay() {
 }
 
 function getPlayerSelection() {
-    while(true){
+    while(true){        
         let userChoice = prompt("Rock, Paper, Scissors, Shootttt!!");
         if (!userChoice) {
             cancelGame();
@@ -44,7 +44,7 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === "scissors" && computerSelection === "paper")
     ) {
         playerScore++;
-        return "You win 😍! " + playerSelection + " beats " + computerSelection;        
+        return "You won 😍! " + playerSelection + " beats " + computerSelection;        
     } else {
         computerScore++;
         return "You lost 😫! " + computerSelection + " beats " + playerSelection;        
@@ -63,6 +63,9 @@ function game() {
     
     while (round <= roundsToPlay && !endGame) {      
         const playerSelection = getPlayerSelection();
+        
+        if(endGame) break;
+
         const computerSelection = computerPlay();        
         let roundResult = playRound(playerSelection, computerSelection);
 
@@ -73,7 +76,14 @@ function game() {
     }
 
     if (!endGame) {
-        console.log(`💀Game over! Final Score - Player: ${playerScore} | Computer: ${computerScore} | Draws:${draws} `);
+        console.log(`==== FINAL RESULT ==== \n 💀Game over! Final Score - Player: ${playerScore} | Computer: ${computerScore} | Draws:${draws}  `);
+        if(playerScore > computerScore){
+            console.log(`You WON the game! 🎉 `);
+        } else if(playerScore < computerScore){
+            console.log(`You LOST the game! 😭 `);
+        } else {
+            console.log(`TIED GAME`); 
+        }
     }
 }
 
