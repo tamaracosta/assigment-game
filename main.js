@@ -62,7 +62,7 @@ function cancelGame() {
 function game() {
     greeting();
     
-    while (round <= roundsToPlay && !endGame) {      
+    for (; round <= roundsToPlay && !endGame; round++) {
         const playerSelection = getPlayerSelection();
         
         if(endGame) break;
