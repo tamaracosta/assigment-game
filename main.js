@@ -59,10 +59,28 @@ function cancelGame() {
     }
 }
 
+function resetGame(){
+    let userResponse;
+    do{
+        userResponse = prompt("Game Over! Do you want to play again? (yes/no)").toLowerCase();
+    
+        if(userResponse === "yes"){
+            playerScore = 0;
+            computerScore = 0;
+            round = 1;
+            game();
+        }else if(userResponse === "no"){
+            alert("Thanks for playing. See you next time!");
+        }else{
+            alert("Invalid answer! Please enter 'yes' or 'no'.")
+        } 
+    }while(userResponse !== "yes" && userResponse !== "no");
+}    
+
 function game() {
     greeting();
     
-    for (; round <= roundsToPlay && !endGame; round++) {
+    for (let i = round; i <= roundsToPlay && !endGame; i++) {
         const playerSelection = getPlayerSelection();
         
         if(endGame) break;
@@ -86,6 +104,7 @@ function game() {
             console.log(`TIED GAME`); 
         }
     }
+    resetGame();
 }
 
 game();
