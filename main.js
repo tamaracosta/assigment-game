@@ -67,6 +67,7 @@ function resetGame(){
         if(userResponse === "yes"){
             playerScore = 0;
             computerScore = 0;
+            draws = 0;
             round = 1;
             game();
         }else if(userResponse === "no"){
