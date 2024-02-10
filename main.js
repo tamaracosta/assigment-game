@@ -20,7 +20,7 @@ function computerPlay() {
 function getPlayerSelection() {    
 
     while(true){
-        let userChoice = prompt("Rock, Paper, Scissors, Shoot!").toLowerCase();
+        let userChoice = prompt("Rock, Paper, Scissors, Shoot!").toLowerCase().trim();
 
         if (!userChoice) {
             cancelGame();
