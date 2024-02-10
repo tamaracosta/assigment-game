@@ -7,31 +7,31 @@ let round = 1;
 let endGame = false;
 let draws = 0;
 
-function greeting() {   
+function greeting() {
     alert("Welcome to my 👊Rock, ✋Paper, ✌️Scissors Game!");
     alert("Rock crushes scissors, scissors cut paper, and paper covers rock")
-    alert("There are 5 rounds.Let's start! Have fun!! ▶️ \n\n 📢CLICK F12 (console.log) TO SEE THE RESULTS") 
+    alert("There are 5 rounds.Let's start! Have fun!! ▶️ \n\n 📢CLICK F12 (console.log) TO SEE THE RESULTS")
 }
 
 function computerPlay() {
-    return options[Math.floor(Math.random()*options.length)];
+    return options[Math.floor(Math.random() * options.length)];
 }
 
-function getPlayerSelection() {    
+function getPlayerSelection() {
 
-    while(true){
+    while (true) {
         let userChoice = prompt("Rock, Paper, Scissors, Shoot!");
 
         if (!userChoice) {
             cancelGame();
-            if(endGame){
+            if (endGame) {
                 return;
-            }else{
+            } else {
                 continue;
-            }   
+            }
         }
         userChoice = userChoice.toLowerCase().trim();
-        if(options.includes(userChoice)) {
+        if (options.includes(userChoice)) {
             return userChoice;
         } else {
             alert('Invalid selection!!\nPlease choose one of the following options:\nRock\nPaper\nScissors');
@@ -41,7 +41,7 @@ function getPlayerSelection() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        draws++;        
+        draws++;
         return "Draw";
     } else if (
         (playerSelection === "rock" && computerSelection === "scissors") ||
@@ -49,67 +49,67 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === "scissors" && computerSelection === "paper")
     ) {
         playerScore++;
-        return "You won 😍! " + playerSelection + " beats " + computerSelection;        
+        return "You won 😍! " + playerSelection + " beats " + computerSelection;
     } else {
         computerScore++;
-        return "You lost 😫! " + computerSelection + " beats " + playerSelection;        
+        return "You lost 😫! " + computerSelection + " beats " + playerSelection;
     }
 }
 
-function cancelGame() {    
-    if (confirm("Do you wanna quit the game?")) {       
+function cancelGame() {
+    if (confirm("Do you wanna quit the game?")) {
         alert("Bye! Thank you for playing! 😊");
         endGame = true;
     }
 }
 
-function resetGame(){
+function resetGame() {
     let userResponse;
-    do{
+    do {
         userResponse = prompt("Game Over! Do you want to play again? (yes/no)");
-                
-        if(userResponse){
+
+        if (userResponse) {
             userResponse = userResponse.toLowerCase().trim();
         }
-        if(userResponse === "yes"){
+        if (userResponse === "yes") {
             playerScore = 0;
             computerScore = 0;
             draws = 0;
             round = 1;
             game();
-        }else if(userResponse === "no"){
+        } else if (userResponse === "no") {
             alert("Thanks for playing. See you next time!");
-        }else{
+        } else {
             alert("Invalid answer! Please enter 'yes' or 'no'.")
-        } 
-    }while(userResponse !== "yes" && userResponse !== "no");
-}    
+        }
+    } while (userResponse !== "yes" && userResponse !== "no");
+}
 
 function game() {
     greeting();
-    
+
     for (let i = round; i <= roundsToPlay && !endGame; i++) {
         const playerSelection = getPlayerSelection();
-        
-        if(endGame) break;
 
-        const computerSelection = computerPlay();        
+        if (endGame) break;
+
+        const computerSelection = computerPlay();
         let roundResult = playRound(playerSelection, computerSelection);
 
-        console.log(`===== ROUND ${round} =====`);        
+        console.log(`===== ROUND ${round} =====`);
         console.log(` 🧑‍💻PLAYER: ${playerSelection} ---> score: ${playerScore} \n 💻COMPUTER: ${computerSelection} ---> score: ${computerScore} \n 😕DRAWS: ---> ${draws}`)
         console.log(roundResult);
-        round++;        
+        round++;
     }
 
     if (!endGame) {
         console.log(`==== FINAL RESULT ==== \n 💀Game over! Final Score - Player: ${playerScore} | Computer: ${computerScore} | Draws:${draws}  `);
-        if(playerScore > computerScore){
+        if (playerScore > computerScore) {
             console.log(`You WON the game! 🎉 `);
-        } else if(playerScore < computerScore){
+        } else if (playerScore < computerScore) {
             console.log(`You LOST the game! 😭 `);
         } else {
-            console.log(`TIED GAME`); 
+            console.log(`TIED GAME`);
         }
     }
     resetGame();
