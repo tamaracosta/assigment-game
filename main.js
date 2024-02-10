@@ -24,11 +24,13 @@ function getPlayerSelection() {
 
         if (!userChoice) {
             cancelGame();
-            return;
+            if(endGame){
+                return;
+            }else{
+                continue;
+            }   
         }
-
         userChoice = userChoice.toLowerCase().trim();
-
         if(options.includes(userChoice)) {
             return userChoice;
         } else {
