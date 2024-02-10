@@ -67,7 +67,7 @@ function resetGame(){
     let userResponse;
     do{
         userResponse = prompt("Game Over! Do you want to play again? (yes/no)")
-        userResponse = userResponse.toLowerCase().trim();
+        userResponse = userResponse?.toLowerCase().trim();
         if(userResponse === "yes"){
             playerScore = 0;
             computerScore = 0;
