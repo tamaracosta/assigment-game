@@ -20,12 +20,14 @@ function computerPlay() {
 function getPlayerSelection() {    
 
     while(true){
-        let userChoice = prompt("Rock, Paper, Scissors, Shoot!").toLowerCase().trim();
+        let userChoice = prompt("Rock, Paper, Scissors, Shoot!");
 
         if (!userChoice) {
             cancelGame();
             return;
         }
+
+        userChoice = userChoice.toLowerCase().trim();
 
         if(options.includes(userChoice)) {
             return userChoice;
@@ -62,7 +64,7 @@ function cancelGame() {
 function resetGame(){
     let userResponse;
     do{
-        userResponse = prompt("Game Over! Do you want to play again? (yes/no)").toLowerCase();
+        userResponse = prompt("Game Over! Do you want to play again? (yes/no)").toLowerCase().trim();
     
         if(userResponse === "yes"){
             playerScore = 0;
